@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+  </head>
+
+  <body ng-app="quoteBook">
+    <div ng-controller='mainCtrl'>
+      <p ng-repeat="quote in quotes track by $index">
+        <span class='text'>{{quote.text}}</span>
+        <span class='author'>--{{quote.author}}</span>
+        <button ng-click='deleteMe(quote.text)'>Delete</button>
+      </p>
+
+      <input type="text" placeholder="add new quote" ng-model='newQuoteText'>
+      <input type="text" placeholder="quotes author" ng-model='newQuoteAuthor'>
+      <button ng-click='addQuote()'>Add Quote</button>
+      <div>
+        Filter: <input type="text" placeholder="filter by author" ng-model='filterText.author'>
+      </div>
+      <p ng-repeat='quote in quotes | filter: filterText'>{{quote.text}} {{quote.author}}</p>
+
+      {{cookies}}
+
+
+
+
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.min.js"></script>
+
+
+    <script src='js/app.js'></script>
+    <script src='js/dataService.js'></script>
+    <script src='js/mainCtrl.js'></script>
+
+
+  </body>
+
+</html>
