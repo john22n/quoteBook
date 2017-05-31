@@ -5,35 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <title>Document</title>
   </head>
 
-  <body ng-app="quoteBook">
-    <div ng-controller='mainCtrl'>
+  <body ng-app="quoteBook" layout='row' layout-padding layout-fill layout-align='center'>
+    <div ng-controller='mainCtrl' layout='column'>
+
       <p ng-repeat="quote in quotes track by $index">
         <span class='text'>{{quote.text}}</span>
         <span class='author'>--{{quote.author}}</span>
-        <button ng-click='deleteMe(quote.text)'>Delete</button>
+        <md-button class='md-warn md-raised' ng-click='deleteMe(quote.text)'>Delete</button>
       </p>
 
-      <input type="text" placeholder="add new quote" ng-model='newQuoteText'>
-      <input type="text" placeholder="quotes author" ng-model='newQuoteAuthor'>
-      <button ng-click='addQuote()'>Add Quote</button>
-      <div>
-        Filter: <input type="text" placeholder="filter by author" ng-model='filterText.author'>
+      <div flex class="bottom">
+        <input type="text" placeholder="add new quote" ng-model='newQuoteText'>
+        <input type="text" placeholder="quotes author" ng-model='newQuoteAuthor'>
+        <button class='md-warn md-raised' ng-click='addQuote()'>Add Quote</button>
+        <div>
+          Filter: <input type="text" placeholder="filter by author" ng-model='filterText.author'>
+        </div>
+        <p ng-repeat='quote in quotes | filter: filterText'>{{quote.text}} --{{quote.author}}</p>
       </div>
-      <p ng-repeat='quote in quotes | filter: filterText'>{{quote.text}} {{quote.author}}</p>
-
       {{cookies}}
-
-
-
 
     </div>
 
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+
 
 
     <script src='js/app.js'></script>

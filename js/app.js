@@ -1,1 +1,1 @@
-angular.module('quoteBook', ['ngCookies']);
+angular.module('quoteBook', ['ngCookies', 'ngMaterial']);
